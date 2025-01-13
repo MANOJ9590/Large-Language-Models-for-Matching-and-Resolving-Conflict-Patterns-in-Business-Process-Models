@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:secbpmn="http://disi.unitn.it/secbpmn/2014/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="secbpmn:Definitions" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.1.1" targetNamespace="http://disi.unitn.it/secbpmnq/2014/1.0/collaboration" antipattern="true">
+  <bpmn2:collaboration id="Collaboration_1" name="Collaboration 1">
+    <bpmn2:participant id="Participant_1" name="@AnyActor" processRef="Process_1"/>
+    <bpmn2:participant id="Participant_2" name="@A" processRef="Process_2"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_1" name="Process 1" isExecutable="false"/>
+  <bpmn2:process id="Process_2" name="@A Process" definitionalCollaborationRef="Collaboration_1" isExecutable="false">
+    <bpmn2:task id="Task_1" name="@X">
+      <bpmn2:outgoing>Path_1</bpmn2:outgoing>
+      <bpmn2:outgoing>Path_1</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_2">
+        <bpmn2:dataOutput id="DataOutput_4" name="output1"/>
+        <bpmn2:inputSet id="InputSet_2" name="Input Set 2"/>
+        <bpmn2:outputSet id="OutputSet_2" name="Output Set 2">
+          <bpmn2:dataOutputRefs>DataOutput_4</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_4</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObject_3</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:dataObject id="DataObject_3" name="@Z"/>
+    <bpmn2:task id="Task_2" name="@Y">
+      <bpmn2:incoming>Path_1</bpmn2:incoming>
+      <bpmn2:incoming>Path_1</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow xsi:type="secbpmn:path" id="Path_1" sourceRef="Task_1" targetRef="Task_2"/>
+    <bpmn2:artifact xsi:type="secbpmn:anonymity" id="Anonymity_1" anonymityLevel="Anonymous" insiderAdversary="true">
+      <secbpmn:securityassociation>SecurityAssociation_3</secbpmn:securityassociation>
+    </bpmn2:artifact>
+    <bpmn2:association xsi:type="secbpmn:securityAssociation" id="SecurityAssociation_3" sourceRef="Anonymity_1" targetRef="Task_2"/>
+    <bpmn2:artifact xsi:type="secbpmn:nonrepudiation" id="NonRepudiation_1">
+      <secbpmn:securityassociation>SecurityAssociation_2</secbpmn:securityassociation>
+    </bpmn2:artifact>
+    <bpmn2:association xsi:type="secbpmn:securityAssociation" id="SecurityAssociation_2" sourceRef="NonRepudiation_1" targetRef="DataObject_3"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="BPMNShape_Participant_1" bpmnElement="Participant_2" isHorizontal="false">
+        <dc:Bounds height="281.0" width="241.0" x="400.0" y="160.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_5">
+          <dc:Bounds height="22.0" width="24.0" x="508.0" y="163.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_1" bpmnElement="Task_1">
+        <dc:Bounds height="50.0" width="110.0" x="421.0" y="256.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_6">
+          <dc:Bounds height="20.0" width="20.0" x="466.0" y="271.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_DataObject_2" bpmnElement="DataObject_3">
+        <dc:Bounds height="50.0" width="36.0" x="581.0" y="256.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7">
+          <dc:Bounds height="20.0" width="20.0" x="589.0" y="306.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_2" bpmnElement="Task_2">
+        <dc:Bounds height="50.0" width="110.0" x="421.0" y="375.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8">
+          <dc:Bounds height="20.0" width="20.0" x="466.0" y="390.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Anonymity_1" bpmnElement="Anonymity_1">
+        <dc:Bounds height="30.0" width="30.0" x="584.0" y="385.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_16"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_NonRepudiation_1" bpmnElement="NonRepudiation_1">
+        <dc:Bounds height="30.0" width="30.0" x="584.0" y="200.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_DataOutputAssociation_1" bpmnElement="DataOutputAssociation_1">
+        <di:waypoint xsi:type="dc:Point" x="531.0" y="281.0"/>
+        <di:waypoint xsi:type="dc:Point" x="581.0" y="279.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_Path_1" bpmnElement="Path_1" sourceElement="BPMNShape_Task_1" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="476.0" y="306.0"/>
+        <di:waypoint xsi:type="dc:Point" x="476.0" y="340.0"/>
+        <di:waypoint xsi:type="dc:Point" x="476.0" y="375.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_10"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SecurityAssociation_3" bpmnElement="SecurityAssociation_3" sourceElement="BPMNShape_Anonymity_1" targetElement="BPMNShape_Task_2">
+        <di:waypoint xsi:type="dc:Point" x="584.0" y="400.0"/>
+        <di:waypoint xsi:type="dc:Point" x="561.0" y="400.0"/>
+        <di:waypoint xsi:type="dc:Point" x="561.0" y="400.0"/>
+        <di:waypoint xsi:type="dc:Point" x="531.0" y="400.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_17"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SecurityAssociation_2" bpmnElement="SecurityAssociation_2" sourceElement="BPMNShape_NonRepudiation_1" targetElement="BPMNShape_DataObject_2">
+        <di:waypoint xsi:type="dc:Point" x="599.0" y="230.0"/>
+        <di:waypoint xsi:type="dc:Point" x="599.0" y="243.0"/>
+        <di:waypoint xsi:type="dc:Point" x="599.0" y="256.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

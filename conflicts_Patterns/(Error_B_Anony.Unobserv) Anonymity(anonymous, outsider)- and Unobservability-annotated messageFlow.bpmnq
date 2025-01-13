@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://org.eclipse.bpmn2/ext" xmlns:secbpmn="http://disi.unitn.it/secbpmn/2014/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="secbpmn:Definitions" id="Definitions_1" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.1.1" targetNamespace="http://disi.unitn.it/secbpmnq/2014/1.0/collaboration" antipattern="true">
+  <bpmn2:collaboration id="Collaboration_1" name="Collaboration 1">
+    <bpmn2:participant id="Participant_1" name="@AnyActor" processRef="Process_1"/>
+    <bpmn2:participant id="Participant_3" name="@B"/>
+    <bpmn2:participant id="Participant_4" name="@A" processRef="Process_3"/>
+    <bpmn2:messageFlow id="MessageFlow_3" sourceRef="Task_3" targetRef="Participant_3"/>
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_1" name="Process 1" isExecutable="false">
+    <bpmn2:artifact xsi:type="secbpmn:anonymity" id="Anonymity_1" anonymityLevel="Anonymous">
+      <secbpmn:securityassociation>SecurityAssociation_5</secbpmn:securityassociation>
+    </bpmn2:artifact>
+    <bpmn2:association xsi:type="secbpmn:securityAssociation" id="SecurityAssociation_5" sourceRef="Anonymity_1" targetRef="MessageFlow_3"/>
+    <bpmn2:artifact xsi:type="secbpmn:unobservability" id="Unobservability_1">
+      <secbpmn:securityassociation>SecurityAssociation_1</secbpmn:securityassociation>
+    </bpmn2:artifact>
+    <bpmn2:association xsi:type="secbpmn:securityAssociation" id="SecurityAssociation_1" sourceRef="Unobservability_1" targetRef="MessageFlow_3"/>
+  </bpmn2:process>
+  <bpmn2:process id="Process_3" name="@A Process" definitionalCollaborationRef="Collaboration_1" isExecutable="false">
+    <bpmn2:task id="Task_3" name="@X"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="BPMNShape_Participant_2" bpmnElement="Participant_3" isHorizontal="false">
+        <dc:Bounds height="201.0" width="150.0" x="570.0" y="167.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
+          <dc:Bounds height="22.0" width="24.0" x="633.0" y="170.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Participant_3" bpmnElement="Participant_4" isHorizontal="false">
+        <dc:Bounds height="206.0" width="150.0" x="293.0" y="165.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_14">
+          <dc:Bounds height="22.0" width="24.0" x="356.0" y="168.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Anonymity_1" bpmnElement="Anonymity_1">
+        <dc:Bounds height="30.0" width="30.0" x="488.0" y="220.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Task_3" bpmnElement="Task_3">
+        <dc:Bounds height="50.0" width="110.0" x="310.0" y="270.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_15">
+          <dc:Bounds height="20.0" width="20.0" x="355.0" y="285.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_Unobservability_1" bpmnElement="Unobservability_1">
+        <dc:Bounds height="30.0" width="30.0" x="488.0" y="327.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_MessageFlow_3" bpmnElement="MessageFlow_3" sourceElement="BPMNShape_Task_3" targetElement="BPMNShape_Participant_2">
+        <di:waypoint xsi:type="dc:Point" x="420.0" y="295.0"/>
+        <di:waypoint xsi:type="dc:Point" x="495.0" y="295.0"/>
+        <di:waypoint xsi:type="dc:Point" x="495.0" y="292.0"/>
+        <di:waypoint xsi:type="dc:Point" x="570.0" y="292.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_17"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SecurityAssociation_5" bpmnElement="SecurityAssociation_5" sourceElement="BPMNShape_Anonymity_1" targetElement="BPMNEdge_MessageFlow_3">
+        <di:waypoint xsi:type="dc:Point" x="488.0" y="235.0"/>
+        <di:waypoint xsi:type="dc:Point" x="478.0" y="235.0"/>
+        <di:waypoint xsi:type="dc:Point" x="478.0" y="294.0"/>
+        <di:waypoint xsi:type="dc:Point" x="495.0" y="294.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_18"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SecurityAssociation_1" bpmnElement="SecurityAssociation_1" sourceElement="BPMNShape_Unobservability_1" targetElement="BPMNEdge_MessageFlow_3">
+        <di:waypoint xsi:type="dc:Point" x="503.0" y="327.0"/>
+        <di:waypoint xsi:type="dc:Point" x="503.0" y="294.0"/>
+        <di:waypoint xsi:type="dc:Point" x="495.0" y="294.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
